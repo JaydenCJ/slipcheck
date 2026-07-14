@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="430" viewBox="0 0 1060 430" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" xml:space="preserve">
+  <!-- Terminal rendering of a real slipcheck run over the committed
+       fixtures (output captured 2026-07-13; long lines wrapped for width,
+       continuation lines indented). -->
+  <rect width="1060" height="430" rx="10" fill="#1c2128"/>
+  <rect width="1060" height="34" rx="10" fill="#2d333b"/>
+  <rect y="24" width="1060" height="10" fill="#2d333b"/>
+  <circle cx="20" cy="17" r="6" fill="#f47067"/>
+  <circle cx="40" cy="17" r="6" fill="#e0b543"/>
+  <circle cx="60" cy="17" r="6" fill="#57ab5a"/>
+  <text x="530" y="22" text-anchor="middle" fill="#909dab">slipcheck — audit the archive before you extract it</text>
+
+  <g fill="#adbac7">
+    <text x="24" y="66"><tspan fill="#6cb6ff">$</tspan> slipcheck scan release.tgz sneaky.zip</text>
+
+    <text x="24" y="98" fill="#96d0ff">release.tgz: tar.gz, 2 entries, 2 critical, 0 warnings</text>
+    <text x="24" y="122">  <tspan fill="#f47067">CRITICAL</tspan> link-escape      build — symlink target '../../target' escapes the extraction root</text>
+    <text x="24" y="146">  <tspan fill="#f47067">CRITICAL</tspan> link-indirection build/injected.sh — written through symlink 'build', which points</text>
+    <text x="24" y="166">           outside the extraction root</text>
+
+    <text x="24" y="198" fill="#96d0ff">sneaky.zip: zip, 4 entries, 2 critical, 2 warnings</text>
+    <text x="24" y="222">  <tspan fill="#e0b543">warning </tspan> name-mismatch    docs/readme.txt — central directory says 'docs/readme.txt' but the local</text>
+    <text x="24" y="242">           header says '../../evil.sh'; stream extractors will use the latter</text>
+    <text x="24" y="266">  <tspan fill="#f47067">CRITICAL</tspan> traversal        ../../evil.sh — entry name climbs above the extraction root via '..'</text>
+    <text x="24" y="290">  <tspan fill="#f47067">CRITICAL</tspan> link-escape      lib/libz.so — symlink target '/usr/lib/libz.so' is absolute (leading separator)</text>
+    <text x="24" y="314">  <tspan fill="#e0b543">warning </tspan> case-collision   docs/README.TXT — collides with 'docs/readme.txt' on case-insensitive filesystems</text>
+
+    <text x="24" y="346">2 archives scanned: <tspan fill="#f47067">4 critical</tspan>, <tspan fill="#e0b543">2 warnings</tspan></text>
+
+    <text x="24" y="378"><tspan fill="#6cb6ff">$</tspan> echo $?</text>
+    <text x="24" y="402"><tspan fill="#f47067">1</tspan>   <tspan fill="#768390"># wire it straight into CI: 0 = safe to extract</tspan></text>
+  </g>
+</svg>

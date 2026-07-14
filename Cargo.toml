@@ -1,0 +1,19 @@
+[package]
+name = "slipcheck"
+version = "0.1.0"
+edition = "2021"
+authors = ["JaydenCJ"]
+rust-version = "1.75"
+description = "Audit package archives for path traversal, symlink escapes, setuid bits and absolute paths before you extract them — tar, tar.gz and zip, one static binary."
+license = "MIT"
+repository = "https://github.com/JaydenCJ/slipcheck"
+keywords = ["security", "zip-slip", "tar", "zip", "archive"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+# None. slipcheck is std-only by design: an archive auditor must not carry
+# its own supply chain. Even the DEFLATE decompressor is in-tree.
+
+[profile.release]
+strip = true
+lto = true
