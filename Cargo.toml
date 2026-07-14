@@ -2,7 +2,7 @@
 name = "slipcheck"
 version = "0.1.0"
 edition = "2021"
-authors = ["JaydenCJ"]
+authors = ["JaydenCJ <aisingioro.kiyon@gmail.com>"]
 rust-version = "1.75"
 description = "Audit package archives for path traversal, symlink escapes, setuid bits and absolute paths before you extract them — tar, tar.gz and zip, one static binary."
 license = "MIT"
